@@ -79,6 +79,9 @@ class Scene:
                                                            "point_cloud",
                                                            "iteration_" + str(self.loaded_iter),
                                                            "point_cloud.ply"))
+        elif args.custom_init_path != "":
+            print("Initializing Gaussian Model with a custom ply from " + args.custom_init_path)
+            self.gaussians.load_ply(args.custom_init_path)
         else:
             self.gaussians.create_from_pcd(scene_info.point_cloud, self.cameras_extent)
 
