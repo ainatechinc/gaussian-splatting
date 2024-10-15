@@ -84,6 +84,7 @@ class Scene:
             print("Initializing Gaussian Model with a custom ply from " + args.custom_init_path)
             self.gaussians.load_ply(args.custom_init_path)
             self.gaussians.max_radii2D = torch.zeros((self.gaussians.get_xyz.shape[0]), device="cuda")
+            self.gaussians.spatial_lr_scale = self.cameras_extent
         else:
             self.gaussians.create_from_pcd(scene_info.point_cloud, self.cameras_extent)
 
